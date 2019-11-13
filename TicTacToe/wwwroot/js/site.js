@@ -67,3 +67,13 @@ for (var i = 0; i < cells.length; i++) {
 }
 
 setTurn();
+
+//SERVER TIC TAC TOE
+
+var form = document.getElementById("board");
+var cells = document.getElementsByClassName("cell");
+for (i = 0; i < cells.length; i++) {
+    cells[i].addEventListener(event => {
+        form.submit();
+    });
+}
