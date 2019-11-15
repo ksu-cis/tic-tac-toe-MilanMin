@@ -3,6 +3,7 @@
 
 // Write your Javascript code.
 
+/*
 var turn = "x";
 
 
@@ -76,4 +77,40 @@ for (i = 0; i < cells.length; i++) {
     cells[i].addEventListener(event => {
         form.submit();
     });
+}
+
+*/
+var squares = document.getElementsByClassName("square");
+for (var i = 0; i < squares.length; i++) {
+    squares[i].addEventListener("dragenter", onDragEnter);
+    squares[i].addEventListener("dragend", onDrop);
+    squares[i].addEventListener("dragstart", onDragStart);
+    squares[i].addEventListener("dragleave", onDragExit);
+}
+
+function onDragEnter(event) {
+    if (event.target.children.length > 0) return;
+    if (event.target.classList.contains("checker")) {
+        return;
+    }
+    if (event.target.classList.contains("red")) {
+        return;
+    }
+    event.target.style.backgroundColor = "yellow";
+}
+
+function onDragStart(event) {
+    dragging = {
+        x: event.target.dataset.x,
+        y: event.target.dataset.y
+    }
+    console.log(event);
+}
+
+function onDrop(event) {
+    event.target.style.backgroundColor = "orange";
+}
+
+function onDragExit(event) {
+    event.target.style.backgroundColor = null;
 }
